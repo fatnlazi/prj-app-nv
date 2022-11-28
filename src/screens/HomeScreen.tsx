@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
 import { CommonStyle, FontSize } from "../constants";
 import { StatusBar } from "expo-status-bar";
 import { Audio } from "expo-av";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import {
   launchCameraPickerAsync,
   launchLibraryPickerAsync,
@@ -42,6 +42,7 @@ const card_width = Math.floor(
 );
 const card_height = card_width + cardTitle_height;
 const card_fontSize = choosingFontSize(cardTitle_height);
+const btn_img_height = 70;
 
 function choosingFontSize(height: number) {
   let fontSize = height - 4;
@@ -91,42 +92,42 @@ export default function HomeScreen() {
   const [curCardIndex, setCurCardIndex] = useState<number>(-1);
   const [cardPicked, setCardPicked] = useState<CardType[]>([]);
   const [cardPicker, setCardPicker] = useState<CardType[]>([
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
-    { title: "", imageUri: "", soundUri: "" },
+    { title: "", imageUri: "", soundUri: "" }, // 00
+    { title: "", imageUri: "", soundUri: "" }, // 01
+    { title: "", imageUri: "", soundUri: "" }, // 02
+    { title: "", imageUri: "", soundUri: "" }, // 03
+    { title: "", imageUri: "", soundUri: "" }, // 04
+    { title: "", imageUri: "", soundUri: "" }, // 05
+    { title: "", imageUri: "", soundUri: "" }, // 06
+    { title: "", imageUri: "", soundUri: "" }, // 07
+    { title: "", imageUri: "", soundUri: "" }, // 08
+    { title: "", imageUri: "", soundUri: "" }, // 09
+    { title: "", imageUri: "", soundUri: "" }, // 10
+    { title: "", imageUri: "", soundUri: "" }, // 11
+    { title: "", imageUri: "", soundUri: "" }, // 12
+    { title: "", imageUri: "", soundUri: "" }, // 13
+    { title: "", imageUri: "", soundUri: "" }, // 14
+    { title: "", imageUri: "", soundUri: "" }, // 15
+    { title: "", imageUri: "", soundUri: "" }, // 16
+    { title: "", imageUri: "", soundUri: "" }, // 17
+    { title: "", imageUri: "", soundUri: "" }, // 18
+    { title: "", imageUri: "", soundUri: "" }, // 19
+    { title: "", imageUri: "", soundUri: "" }, // 20
+    { title: "", imageUri: "", soundUri: "" }, // 21
+    { title: "", imageUri: "", soundUri: "" }, // 22
+    { title: "", imageUri: "", soundUri: "" }, // 23
+    { title: "", imageUri: "", soundUri: "" }, // 24
+    { title: "", imageUri: "", soundUri: "" }, // 25
+    { title: "", imageUri: "", soundUri: "" }, // 26
+    { title: "", imageUri: "", soundUri: "" }, // 27
+    { title: "", imageUri: "", soundUri: "" }, // 28
+    { title: "", imageUri: "", soundUri: "" }, // 29
+    { title: "", imageUri: "", soundUri: "" }, // 30
+    { title: "", imageUri: "", soundUri: "" }, // 31
+    { title: "", imageUri: "", soundUri: "" }, // 32
+    { title: "", imageUri: "", soundUri: "" }, // 33
+    { title: "", imageUri: "", soundUri: "" }, // 34
+    { title: "", imageUri: "", soundUri: "" }, // 35
   ]);
   const [imageUri, setImageUri] = useState<string>("");
   const [text, setText] = useState<string>("");
@@ -279,7 +280,7 @@ export default function HomeScreen() {
       <StatusBar />
       <View style={CurrentStyle.clearBtnCtn}>
         <TouchableOpacity onPress={cardPicked_backspace}>
-          <Ionicons name="ios-backspace" size={card_fontSize} color="black" />
+          <Ionicons name="ios-backspace" size={btn_img_height} color="gray" />
         </TouchableOpacity>
       </View>
 
@@ -342,47 +343,104 @@ export default function HomeScreen() {
               placeholder={"TIÊU ĐỀ"}
               value={text}
               onChangeText={(str) => {
-                setText(str.toUpperCase());
+                // setText(str.toUpperCase());
+                setText(str);
               }}
-              autoCapitalize={"characters"}
+              // autoCapitalize={"characters"}
+              autoCapitalize={"sentences"}
             ></TextInput>
           </View>
 
           <TouchableOpacity onPress={image_pickFromLibrary}>
             <View style={CurrentStyle.button}>
-              <MaterialIcons
+              {/* <MaterialIcons
                 name="photo-library"
                 size={FontSize.h2}
                 color="black"
+              /> */}
+              <Image
+                source={require("../../assets/symbol-image-library.png")}
+                style={{ height: btn_img_height, width: btn_img_height }}
               />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={image_pickFromCamera}>
             <View style={CurrentStyle.button}>
-              <MaterialIcons
+              {/* <MaterialIcons
                 name="photo-camera"
                 size={FontSize.h2}
                 color="black"
+              /> */}
+              <Image
+                source={require("../../assets/symbol-camera.png")}
+                style={{ height: btn_img_height, width: btn_img_height }}
               />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={sound_recordingToggle}>
-            <View style={CurrentStyle.button}>
+            <View
+              style={[
+                CurrentStyle.button,
+                {
+                  backgroundColor: recording && "#B9E0FF",
+                },
+              ]}
+            >
               {recording ? (
-                <MaterialIcons name="stop" size={FontSize.h2} color="black" />
+                // <MaterialIcons name="stop" size={FontSize.h2} color="black" />
+                <View
+                  style={{
+                    position: "absolute",
+                    alignContent: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <View
+                    style={{
+                      width: btn_img_height,
+                      height: btn_img_height,
+                      alignSelf: "center",
+                      top: btn_img_height / 2,
+                    }}
+                  >
+                    <FontAwesome
+                      name="circle"
+                      size={btn_img_height}
+                      color="#009EFF"
+                    />
+                  </View>
+                  <View
+                    style={{
+                      width: btn_img_height,
+                      height: btn_img_height,
+                      alignSelf: "center",
+                      bottom: (btn_img_height - window_padding) / 2,
+                    }}
+                  >
+                    <MaterialIcons
+                      name="stop"
+                      size={btn_img_height - window_padding}
+                      color="white"
+                    />
+                  </View>
+                </View>
               ) : (
-                <MaterialIcons
-                  name="fiber-manual-record"
-                  size={FontSize.h2}
-                  color="red"
+                // <MaterialIcons
+                //   name="fiber-manual-record"
+                //   size={FontSize.h2}
+                //   color="red"
+                // />
+                <Image
+                  source={require("../../assets/symbol-record.png")}
+                  style={{ height: btn_img_height, width: btn_img_height }}
                 />
               )}
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={sound_replay}>
+          {/* <TouchableOpacity onPress={sound_replay}>
             <View style={CurrentStyle.button}>
               <MaterialIcons
                 name="play-arrow"
@@ -390,7 +448,7 @@ export default function HomeScreen() {
                 color="black"
               />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <TouchableOpacity onPress={card_accept}>
             <View style={CurrentStyle.button}>
@@ -409,7 +467,7 @@ const CurrentStyle = StyleSheet.create({
     alignItems: "center",
   },
   clearBtnCtn: {
-    margin: card_margin,
+    marginHorizontal: card_margin,
     alignSelf: "flex-end",
     flexDirection: "row",
   },
@@ -477,7 +535,7 @@ const CurrentStyle = StyleSheet.create({
   },
   imageCtn: {
     backgroundColor: "white",
-    width: window_width - window_padding * 16,
+    width: window_width - window_padding * 8,
     marginTop: card_margin,
     aspectRatio: 1,
     ...CommonStyle.round,
@@ -490,7 +548,7 @@ const CurrentStyle = StyleSheet.create({
   textContainer: {
     height: cardTitle_height + window_padding,
     marginBottom: card_margin,
-    width: window_width - window_padding * 16,
+    width: window_width - window_padding * 8,
     ...CommonStyle.center,
     ...CommonStyle.round,
     ...CommonStyle.border,
@@ -501,8 +559,9 @@ const CurrentStyle = StyleSheet.create({
     fontSize: card_fontSize,
   },
   button: {
-    height: cardTitle_height + window_padding,
-    width: window_width - window_padding * 16,
+    height: btn_img_height,
+    // width: window_width - window_padding * 8,
+    width: btn_img_height * 2,
     marginVertical: card_margin,
     ...CommonStyle.center,
     ...CommonStyle.border,
