@@ -1,13 +1,21 @@
-Trên máy tính:
+# 1. Download app Expo Go for your mobilephone
 
-1. Tải app Expo Go để nạp dự án.
-   Link: https://expo.dev/client
+### For IOS
 
-2. Vào link dự án để lấy hình ảnh mã QR.
-   https://expo.dev/@fatnlazi/project-app-nhanvan
+- Go to **App Store**
+- Search for **Expo Go**
+- Install the app
 
-3a. Với điện thoại Android.
-Vào ứng dụng Expo Go, bấm vào phần camera quét QR code để mở dự án.
+### For Android
 
-3b. Với điện thoại Iphone.
-Vào camera, quét mã QR code và ấn vào link để mở dự án.
+- Go to **Google Play**
+- Search for **Expo**
+- Install the app
+
+# 2. Open the application
+
+- Open your browser
+- Paste this link: exp://exp.host/@fatnlazi/project-app-nhanvan?release-channel=default
+
+## Reference
+- https://expo.dev/@fatnlazi/project-app-nhanv
