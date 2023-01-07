@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "project-app-nhanvan",
-    "slug": "project-app-nhanvan",
+    "name": "prj-app-nv-js",
+    "slug": "prj-app-nv-js",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },

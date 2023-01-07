@@ -1,35 +1,33 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "jest": true
+    "es2021": true
   },
   "extends": [
     "plugin:react/recommended",
-    "standard-with-typescript",
-    "react-app",
-    "react-app/jest",
+    "eslint:recommended",
     "airbnb",
-    "airbnb-typescript",
-    "plugin:import/typescript"
+    "airbnb/hooks",
+    "prettier"
   ],
   "overrides": [],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "parser": "@typescript-eslint/parser",
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": ["react", "react-native", "prettier"],
   "rules": {
-    "import/no-unresolved": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extension": [".jsx", ".tsx"]
-      }
-    ]
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "no-process-exit": "off",
+    "object-shorthand": "off",
+    "class-methods-use-this": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
