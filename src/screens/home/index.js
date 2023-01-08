@@ -5,101 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from '../../styles';
 import * as action from '../../redux/action';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import * as onPress from './on_press';
 import { useNavigation } from '@react-navigation/native';
-
-function CardAreaView({ style, index, atCart: onCart }) {
-  const cardArea = useSelector((state) => state.cardArea);
-  const catalogue = useSelector((state) => state.catalogue);
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
-
-  function selectOnPress() {
-    if (onCart) {
-    } else {
-      if (catalogue.list[index].text && catalogue.list[index].imageUri) {
-        dispatch(action.pushCart());
-      } else {
-        navigation.navigate('CardProps');
-      }
-    }
-  }
-
-  return (
-    <TouchableOpacity onPress={selectOnPress}>
-      <View
-        style={[
-          style,
-          styles.border,
-          styles.borderRound,
-          {
-            width: cardArea.width,
-            height: cardArea.height,
-            margin: cardArea.margin,
-            backgroundColor: '#ffffff',
-          },
-        ]}
-      >
-        <View
-          style={[
-            styles.borderRound,
-            {
-              width: cardArea.width - 1,
-              height: cardArea.width - 1,
-              margin: 0,
-              padding: 0,
-            },
-          ]}
-        >
-          {catalogue.list[index].imageUri ? (
-            <Image
-              source={{ uri: catalogue.list[index].imageUri }}
-              style={[
-                styles.border,
-                styles.borderRound,
-                {
-                  width: cardArea.width,
-                  height: cardArea.width,
-                  margin: 0,
-                  padding: 0,
-                },
-              ]}
-            />
-          ) : null}
-        </View>
-
-        {
-          <View
-            style={[
-              styles.flexColumnCenter,
-              styles.borderRound,
-              {
-                borderTopStartRadius: 0,
-                borderTopEndRadius: 0,
-                width: cardArea.width,
-                height: cardArea.height - cardArea.width,
-                margin: 0,
-                padding: 0,
-              },
-            ]}
-          >
-            {catalogue.list[index].text ? (
-              <Text
-                style={[
-                  {
-                    fontSize: cardArea.height - cardArea.width,
-                  },
-                ]}
-              >
-                {catalogue.list[index].text}
-              </Text>
-            ) : null}
-          </View>
-        }
-      </View>
-    </TouchableOpacity>
-  );
-}
+import CardAreaView from './card';
 
 function ToolAreaView({ style, children }) {
   const toolArea = useSelector((state) => state.toolArea);
@@ -128,16 +35,21 @@ function BackSpaceButton({ style }) {
   const toolArea = useSelector((state) => state.toolArea);
   const dispatch = useDispatch();
 
+  function onPressPopCart() {
+    dispatch(action.popCart());
+  }
+
   return (
-    <TouchableOpacity onPress={() => onPress.popCart(dispatch)}>
+    <TouchableOpacity onPress={onPressPopCart}>
       <View
         style={[
+          style,
           styles.border,
           styles.borderRound,
           {
             width: toolArea.height * 2,
             height: toolArea.height,
-            // backgroundColor: '#999999',
+            // backgroundColor: '#e6e6e6',
           },
         ]}
       >
@@ -166,7 +78,7 @@ function CartAreaView({ style, children }) {
           width: cartArea.width,
           height: cartArea.height,
           margin: cartArea.margin,
-          // backgroundColor: '#999999',
+          backgroundColor: '#e6e6e6',
         },
       ]}
     >
@@ -188,7 +100,7 @@ function CatalogueAreaView({ style, children }) {
           width: catalogueArea.width,
           height: catalogueArea.height,
           margin: catalogueArea.margin,
-          // backgroundColor: '#999999',
+          backgroundColor: '#e6e6e6',
         },
       ]}
     >
